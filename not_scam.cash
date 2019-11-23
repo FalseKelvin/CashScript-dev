@@ -6,8 +6,8 @@ pragma cashscript ^0.2.0;
 
 contract NotScam (int maxInput) (
 	pubkey initiatorPkh, // pub key of initial person sending the 0.1 BCH
-	int incomingValue = instance.value,
-	int maxInputValue = maxInput
+	int incomingValue = instance.value, // value of what the initial person sent
+	int maxInputValue = maxInput // the max value that the initial person is allowed to send to the contract
 ) {
 
 
