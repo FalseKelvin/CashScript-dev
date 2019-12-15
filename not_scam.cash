@@ -6,15 +6,15 @@ pragma cashscript ^0.2.0;
 
 contract NotScam (int maxInput) (
 	pubkey initiatorPkh, // pub key of initial person sending the 0.1 BCH
-	int incomingValue = instance.value, // value of what the initial person sent
-	int maxInputValue = maxInput // the max value that the initial person is allowed to send to the contract
+	bytes20 incomingValue = instance.value, // value of what the initial person sent
+	bytes20 maxInputValue = maxInput // the max value that the initial person is allowed to send to the contract
 ) {
 
 
 function checkAndPay(sig ownerSig) {
         
 	// setting the return transfer to be 10 times the input
-        int valueToTransferBack = incomingValue * 10; 
+        bytes20 valueToTransferBack = incomingValue * 10; 
 
 	// if you don't have 10 times the input then the function errors out and the initial BCH is returned via code elsewhere
         require(this.balance >= valueToTransferBack, "Insufficient balance"); 
