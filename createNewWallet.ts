@@ -2,6 +2,8 @@
 * Demonstration of:
 * 1. Creation of a new wallet
 * 2. Output of wallet address and current balance
+* 
+* Note: the '@ts-ignore' below is not a comment but rather a flag to avoid TypeScript compilation errors
 */
 
 import { BITBOX } from 'bitbox-sdk';
