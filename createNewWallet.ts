@@ -16,7 +16,7 @@ run();
 	const network: string = 'testnet';
 	const bitbox: BITBOX = new BITBOX({ restURL: 'https://trest.bitcoin.com/v2/' });
 
-	// Initialise HD node and alice's keypair
+	// Initialise HD node
 	const rootSeed: Buffer = bitbox.Mnemonic.toSeed('CashScript'); // auto generate mnemonic seed for wallet
 	const hdNode: HDNode = bitbox.HDNode.fromSeed(rootSeed, network); // generate wallet from mnemonic
 	// Optional: you can change to a different wallet by using bitbox.HDNode.derivePath(wallet, "m/44/145'/0'/0/0");
