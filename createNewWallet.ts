@@ -1,7 +1,7 @@
 /*
 * Demonstration of:
 * 1. Creation of a new wallet
-* 2. Output of wallet address
+* 2. Output of wallet address and current balance
 */
 
 import { BITBOX } from 'bitbox-sdk';
@@ -21,6 +21,9 @@ run();
 
 	// get the CashAddress of this node/wallet
 	const nodeCashaddr = bitbox.HDNode.toCashAddress(hdNode); 
-	console.log('CashAddress:', nodeCashaddr);
+		
+	// @ts-ignore
+	const details: AddressDetailsResult = await bitbox.Address.details(nodeCashaddr);
+	console.log(`You have ${details.balanceSat} satoshis + ${details.unconfirmedBalanceSat} unconfirmed satoshis`);
 }
 
