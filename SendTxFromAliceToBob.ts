@@ -1,5 +1,5 @@
 /*
-* Demonstration of:
+* Demonstration of: 
 * - Retireving public key and public key hashes
 * - Instantiate an existing *.cash contract
 * - Calling on spend() from p2pkh.cash to check whether spender's (Alice) pk/pkh and signature matches
