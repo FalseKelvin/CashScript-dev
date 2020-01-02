@@ -1,0 +1,33 @@
+pragma cashscript ^0.3.0;
+
+contract PriceBet(bytes20 pkh?, pubkey ownerPk?, pubkey oraclePk?, int minBlock?, int priceTarget?) {
+	
+	function spend(pubkey pk?, sig s?) {
+	
+		//verifies signature and pk->pkh
+		require(hash160(pk) == pkh);
+        require(checkSig(s, pk));
+        
+	}
+	// need a way for releaseTotalWager to also take in alice and bob's predictions
+	// and then return the winner's ID of some sort, followed by the spend logic back in typescript
+	// currently not possible onchain - awaiting further cashscript release
+    function releaseTotalWager(sig ownerSig, datasig oracleSig, bytes oracleMessage) {
+ 
+        // message: { blockheight, price }
+        int blockHeight = int(oracleMessage.split(4)[0]);
+        int price = int(oracleMessage.split(4)[1]);
+
+        // Check that blockHeight is after minBlock and not in the future
+        require(blockHeight >= minBlock);
+        require(tx.time >= blockHeight);
+
+        // Check that current price is at least priceTarget
+        require(price >= priceTarget);
+
+        // Handle necessary signature checks
+        require(checkDataSig(oracleSig, oracleMessage, oraclePk));
+        require(checkSig(ownerSig, ownerPk));
+        
+    }
+}
