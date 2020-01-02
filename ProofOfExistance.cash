@@ -1,6 +1,6 @@
 pragma cashscript ^0.3.0;
 
-contract oneForTen(bytes20 pkh) {
+contract ProofOfExistance(bytes20 pkh) {
 
 	function spend(pubkey pk, sig s) {
 		//verifies signature and pk->pkh
