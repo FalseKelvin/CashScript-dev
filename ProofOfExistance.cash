@@ -1,0 +1,17 @@
+pragma cashscript ^0.3.0;
+
+contract oneForTen(bytes20 pkh) {
+
+	function spend(pubkey pk, sig s) {
+		//verifies signature and pk->pkh
+		require(hash160(pk) == pkh);
+        require(checkSig(s, pk));
+	}
+
+	function validateOwnership() {
+		// TODO: add logic which verifies alice's ownership 
+		// of the document hash via signature
+		// simple require() call should suffice
+	}
+
+}
