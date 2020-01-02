@@ -22,7 +22,7 @@ export async function run(): Promise<void> {
   const alicePkh: Buffer = bitbox.Crypto.hash160(alicePk);
 
   // Compile the P2PKH Cash Contract
-  const P2PKH: Contract = Contract.compile(path.join(__dirname, 'p2pkh.cash'), network);
+  const P2PKH: Contract = Contract.compile(path.join(__dirname, 'ProofOfExistance.cash'), network);
 
   // Instantiate a new P2PKH contract with constructor arguments:
   const instance: Instance = P2PKH.new(alicePkh);
